@@ -5,7 +5,7 @@ Este proyecto es una recolpilación de los fronts de entregas en los programacio
 
 | Entrega      | link      |
 |--------------|-----------|
-| React        | [link](/main/react-front/README.md)          |
+| React        | [link](/react-front/README.md)          |
 
 Hay que tener en cuenta que todos los front comparten el mismo backend, este es su propio proyecto pero esta agregado como "backend".
 

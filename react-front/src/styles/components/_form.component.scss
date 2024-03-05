@@ -1,0 +1,59 @@
+form {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  padding: 20px;
+  padding-bottom: 60px;
+  border-radius: 8px;
+  border: lightgray 1px solid;
+
+  h2 {
+    text-align: center;
+  }
+  label {
+    font-size: 12px;
+  }
+
+  button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input, select#roles {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  &:focus-visible {
+    outline-offset: unset;
+    outline: thin dotted black;
+    border: 1px solid #ccc;
+  }
+}
+
+button {
+  background-color: #08A045;
+  width: 120px;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #08A045;
+  }
+}

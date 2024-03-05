@@ -1,46 +1,69 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Entrega React
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Frontend
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Estructura del proyecto del frontend.
+- public/
+- src/
+  - pages/
+  - components/
+  - styles/
+  - utils/
+  - index.tsx
+  - Router.tsx
 
-### `npm test`
+<strong>CSS</strong>
+En la creación de los estilos se decicio usar la metodologia BEM para facilidad de lectura en el codigo, se utilizo CSS custom para para todo el proyecto por que hizo falta implementar clases tipicas como container de bootstrap.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Aparte de los 3 archivos de css especificos de cada documento html
 
-### `npm run build`
+<strong>HTML</strong>
+Se priorizo el utilizar elementos HTML antes de implementar funciones custom con Javascript, el ejemplo de esto es el uso de los diferentes atributos como "placeholder" o "required" de los formularios que a veces son ignorados a la hora de programar.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<strong>Javascript</strong>
+En el uso de javascript para las peticiones en vez de usar axios libreria que facilita la comunicación http se decidio utilzar herramientas ya integradas en javascript que es la función fetch.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Entrega 2
 
-### `npm run eject`
+Para la estructura general del proyecto se dejo la estructura general del proyecto frontend y backend pero tambien se añadio un docker-compose.yml para facilitar el desarrollo.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Para utilizar este solo necesitas correr el comando "docker compose up -d" esto genera el servicio, crea la base de datos y <strong> agrega los roles iniciales </strong>, por lo que lo hace importante si no se usa este comando tener en cuenta realizar estas cosas antes de correr el proyecto. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para este segundo proyecto se cambio la estructura del backend para facilitar el desarrollo de esta misma.
+- src
+    - api
+        - controllers
+        - middlewares
+        - routes
+    - config
+    - data
+        - repository
+        - schemas
+    - services
+    - utils
+    - index.js
+    - .env
+    - mongo-init.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Se instalo la libreria mongoose que servio como "ORM" que ayudará a comunicarnos con mongodb.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Se hizo una actualización al archivo de configuración, ahora en vez de tener las credenciales quemadas son traidas desde un .env.
 
-## Learn More
+Un cambio clave que se hizo es utilizar los modelos de Mongo en vez de usar los de Sequelize, por lo que se creo el schema de ambas collecciones 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Hizo falta reescribir la logica de los middlewares y los controladores para que funcionara.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+La estructura del frontend se quedo igual que en la primera version del proyecto.
+
+Estructura del backend.
+- app: Esta carpeta principal contiene los módulos esenciales del backend, como configuraciones, controladores, modelos y rutas.  
+    - config: En esta carpeta se encuentran archivos relacionados con la configuración del proyecto, como la configuración de la base de datos.
+    - controllers: Aquí se almacenan los controladores, que son responsables de manejar las operaciones lógicas de la aplicación, como el manejo de solicitudes HTTP.
+    - models: La carpeta models contiene los modelos de la base de datos utilizando Sequelize, proporcionando una estructura para interactuar con la base de datos.
+    - routes: En esta carpeta se definen las rutas de la aplicación, estableciendo cómo se manejan las solicitudes HTTP y cómo interactúan con los controladores.
+- server.js: Este archivo sirve como punto de entrada principal para el servidor. Contiene la configuración y la inicialización del servidor Express, conectándose a la base de datos y estableciendo las rutas.

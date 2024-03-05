@@ -10,7 +10,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: testdb
     volumes:
-      - ./node-js-jwt-auth/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./backend/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   mongo-express:
     image: mongo-express

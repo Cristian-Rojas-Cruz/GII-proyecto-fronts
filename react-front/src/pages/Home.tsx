@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/index.scss';
 import Layout from '../components/Layout';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   auth: {
@@ -10,7 +11,8 @@ type Props = {
 }
 
 const Home = (props: Props) => {
-  const {isLoggedIn, setIsLoggedIn} = props.auth;
+  const { isLoggedIn, setIsLoggedIn } = props.auth;
+  const [apiResponse, setApiResponse] = useState()
 
   useEffect(() => {
     const roles = localStorage.getItem('role');
@@ -18,15 +20,15 @@ const Home = (props: Props) => {
 
     let endpoint;
     if (!roles) {
-        endpoint = '/api/test/all'
+      endpoint = '/api/test/all'
     } else if (roles.includes('ADMIN')) {
-        endpoint = '/api/test/admin';
+      endpoint = '/api/test/admin';
     } else if (roles.includes('MODERATOR')) {
-        endpoint = '/api/test/mod';
+      endpoint = '/api/test/mod';
     } else if (roles.includes('USER')) {
-        endpoint = '/api/test/user';
+      endpoint = '/api/test/user';
     } else {
-        endpoint = '/api/test/all'
+      endpoint = '/api/test/all'
     }
     const getheaders = (token: string | null): HeadersInit => {
       if (token !== null) {
@@ -48,18 +50,17 @@ const Home = (props: Props) => {
     })
       .then(response => response.json())
       .then(data => {
-        const variableinfo = document.querySelector("#content > p.info") as HTMLParagraphElement;
-        if (variableinfo) {
-          variableinfo.innerText = data.message;
-        }
+        setApiResponse(data.message)
       })
   }, [])
 
   return (
-    <Layout auth={{isLoggedIn, setIsLoggedIn}}>
+    <Layout auth={{ isLoggedIn, setIsLoggedIn }}>
       <section id="content" className="container">
         <h1>Content Displayed based on the user role:</h1>
-        <p className="info"></p>
+        <p className="info">
+          {apiResponse}
+        </p>
       </section>
     </Layout>
   );

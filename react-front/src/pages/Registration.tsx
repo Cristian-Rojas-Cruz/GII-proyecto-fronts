@@ -12,7 +12,7 @@ interface postUserData {
 
 
 const Registration = () => {
-  const register = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const apiUrl = "http://localhost:8080/api/auth/signup";
     const registrationForm: HTMLFormElement = document.getElementById('registrationForm') as HTMLFormElement;
@@ -75,7 +75,7 @@ const Registration = () => {
 
   return (
     <section id="registration">
-      <form onSubmit={e => register(e)} id="registrationForm">
+      <form onSubmit={onSubmit} id="registrationForm">
           <Link to="/">Go back</Link>
           <h2>Registration</h2>
           <input type="text" id="username" name="username" placeholder="Username" required />

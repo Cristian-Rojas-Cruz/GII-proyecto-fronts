@@ -1,0 +1,1 @@
+export { configRoutes } from './routes/index.js';

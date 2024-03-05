@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progra web</title>
+    <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/pages/registration.css">
+  </head>
+  <body>
+    <div class="navbar">
+      <a class="navbar__logo" href="/front/pages/index.html">
+        <img src="../assets/images/logo.png" alt="Logo">
+      </a>
+    </div>
+    
+    <section id="registration">
+      <form id="registrationForm">
+          <h2>Registration</h2>
+          <input type="text" id="username" name="username" placeholder="Username" required>
+
+          <input type="email" id="email" name="email" placeholder="Email" required>
+          
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          
+          <label for="confirmPassword">Confirm password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+
+          <label for="roles">Select Role:</label>
+          <select id="roles" name="roles" multiple required>
+              <option value="admin">Admin</option>
+              <option value="moderator">Moderator</option>
+              <option value="user">User</option>
+          </select>
+
+          <div class="button-container">
+            <button type="button" onclick="register()">Register</button>
+          </div>
+      </form>
+    </section>
+    <script src="../scripts/registration.js"></script>
+  </body>
+</html>
